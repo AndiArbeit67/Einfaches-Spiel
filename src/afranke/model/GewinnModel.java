@@ -20,4 +20,16 @@ public class GewinnModel {
     public void berechneComputerZahl() {
         this.computerZahl = z.nextInt(1,10);
     }
+
+    public void berechneRunde(int spielerZahl) {
+        this.spielerZahl = spielerZahl;
+        this.berechneComputerZahl();
+        if(spielerZahl == this.computerZahl) {
+            this.gesamtPunkte += 20;
+        } else if(spielerZahl == this.computerZahl - 1 || spielerZahl == this.computerZahl + 1) {
+            this.gesamtPunkte += 5;
+        } else {
+            this.gesamtPunkte -= 10;
+        }
+    }
 }
