@@ -2,25 +2,37 @@ package afranke.view;
 import javax.swing.*;
 import java.awt.*;
 
-public class GrafikPanel {
+public class GrafikPanel extends JPanel {
+
     private JLabel rundenNummer = new JLabel("Tippe eine Zahl von 1 bis 9");
     private JLabel gesamtPunkte = new JLabel("Gesamtpunkte: ");
+    private JTextField[] txtary = new JTextField[2];
 
     public GrafikPanel() {
-        JPanel layoutOben = new JPanel(new GridLayout(3, 2));
+        JPanel oben = new JPanel(new GridLayout(3, 2));
 
-        layoutOben.add(rundenNummer);
-        layoutOben.add(gesamtPunkte);
+        oben.add(new JLabel("Rundenergebnis:"));
+        oben.add(new JLabel("Gesamtpunkte:"));
+        oben.add(rundenNummer);
+        oben.add(gesamtPunkte);
+        oben.add(new JLabel("Deine Zahl:"));
+        oben.add(new JLabel("Computer:"));
 
-        layoutOben.add(new JLabel("Rundenergebnis:"));
-        layoutOben.add(new JLabel("Gesamtpunkte:"));
-        layoutOben.add(new JLabel("Deine Zahl:"));
-        layoutOben.add(new JLabel("Computer:"));
+        JPanel mitte = new JPanel(new GridLayout(1, 2));
+
+        for (int i = 0; i < 2; i++) {
+            txtary[i] = new JTextField();
+            txtary[i].setHorizontalAlignment(JTextField.CENTER);
+            mitte.add(txtary[i]);
+        }
+
+        JPanel unten = new JPanel();
+        unten.setLayout(new BoxLayout(unten, BoxLayout.PAGE_AXIS));
     }
 
     public void setErgebnis(int z, int check) {
-        if(check == 0) {
-            if(z > 0) {
+        if (check == 0) {
+            if (z > 0) {
                 rundenNummer.setText("+" + z);
             } else if (z < 0) {
                 rundenNummer.setText("" + z);
