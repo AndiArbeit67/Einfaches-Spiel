@@ -1,30 +1,31 @@
 package afranke.view;
 import javax.swing.*;
 import java.awt.*;
+import static javax.swing.BoxLayout.PAGE_AXIS;
 
 public class GrafikPanel extends JPanel {
 
     private JLabel rundenNummer = new JLabel("Tippe eine Zahl von 1 bis 9");
     private JLabel gesamtPunkte = new JLabel("Gesamtpunkte: ");
-    private JTextField text = new JTextField();
+    private JTextField txt = new JTextField();
 
     public GrafikPanel() {
         this.setLayout(new BorderLayout());
 
-        JPanel layoutoben = new JPanel(new GridLayout(3, 2));
+        JPanel oben = new JPanel(new GridLayout(3, 2));
 
-        layoutoben.add(new JLabel("Rundenergebnis:"));
-        layoutoben.add(new JLabel("Gesamtpunkte:"));
-        layoutoben.add(rundenNummer);
-        layoutoben.add(gesamtPunkte);
-        layoutoben.add(new JLabel("Deine Zahl:"));
-        layoutoben.add(new JLabel("Computer:"));
+        oben.add(new JLabel("Rundenergebnis:"));
+        oben.add(new JLabel("Gesamtpunkte:"));
+        oben.add(rundenNummer);
+        oben.add(gesamtPunkte);
+        oben.add(new JLabel("Deine Zahl:"));
+        oben.add(new JLabel("Computer:"));
 
         JPanel mitte = new JPanel(new GridLayout(1, 2));
 
-        text.setHorizontalAlignment(JTextField.CENTER);
-        text.setFont(new Font("SansSerif", Font.BOLD, 64));
-        mitte.add(text);
+        txt.setHorizontalAlignment(JTextField.CENTER);
+        txt.setFont(new Font("SansSerif", Font.BOLD, 64));
+        mitte.add(txt);
         JLabel comp = new JLabel("3");
         comp.setFont(new Font("SansSerif", Font.BOLD, 64));
         comp.setBackground(Color.WHITE);
@@ -32,9 +33,17 @@ public class GrafikPanel extends JPanel {
         mitte.add(comp);
 
         JPanel gesamt = new JPanel(new GridLayout(2, 2));
-        gesamt.add(layoutoben);
+        gesamt.add(oben);
         gesamt.add(mitte);
+
+
+        JPanel unten = new JPanel();
+        JButton btn = new JButton("Noch einmal!");
+        unten.add(btn);
+
         this.add(gesamt, BorderLayout.CENTER);
+
+        this.add(unten, BorderLayout.PAGE_END);
     }
 
     public void setErgebnis(int z, int check) {
