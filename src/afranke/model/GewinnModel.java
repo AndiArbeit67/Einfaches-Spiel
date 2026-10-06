@@ -26,10 +26,13 @@ public class GewinnModel {
         this.berechneComputerZahl();
         if(spielerZahl == this.computerZahl) {
             this.gesamtPunkte += 20;
+            this.rundenErgebnis = 20;
         } else if(spielerZahl == this.computerZahl - 1 || spielerZahl == this.computerZahl + 1) {
             this.gesamtPunkte += 5;
+            this.gesamtPunkte = 5;
         } else {
             this.gesamtPunkte -= 10;
+            this.rundenErgebnis = -10;
         }
     }
 
