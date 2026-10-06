@@ -25,7 +25,7 @@ public class controller implements ActionListener {
             f.getGrafikPanel().setTxt("", 0);
             f.getGrafikPanel().setTxt("", 1);
             f.getGrafikPanel().setRundenErgebnis("Tippe eine Zahl von 1 bis 9");
-            f.getGrafikPanel().getTxtField(0).setEnabled(false);
+            f.getGrafikPanel().getTxtField(0).setEnabled(true);
         }
         if (actionL.equals("text")) {
 
