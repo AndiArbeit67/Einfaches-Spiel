@@ -13,7 +13,13 @@ public class GrafikPanel extends JPanel{
     public GrafikPanel() {
         BorderLayout b = new BorderLayout();
         this.setLayout(b);
-        JPanel oben = new JPanel(new GridLayout(3, 2));
+
+        for (int i = 0; i < 2; i++) {
+            this.getJLabel(i).setOpaque(true);
+            this.getJLabel(i).setBackground(Color.WHITE);
+        }
+
+        JPanel oben = new JPanel(new GridLayout(3, 2, 2, 1));
         oben.add(new JLabel("Rundenergebnis:", CENTER));
         oben.add(new JLabel("Gesamtpunkte: ", CENTER));
         oben.add(rundenErgebnis);
@@ -83,5 +89,12 @@ public class GrafikPanel extends JPanel{
 
     public JTextField getTxtField(int i) {
         return text[i];
+    }
+    public JLabel getJLabel(int i) {
+        if(i == 0) {
+            return this.rundenErgebnis;
+        } else {
+            return this.gesamtPunkte;
+        }
     }
 }
