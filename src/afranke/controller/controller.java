@@ -1,4 +1,5 @@
 package afranke.controller;
 
-public class controller {
+public class controller{
+
 }
