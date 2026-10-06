@@ -21,16 +21,43 @@ public class controller implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String actionL = e.getActionCommand();
-        if(actionL.equals("ne")) {
-            for (int i = 0; i < 2; i++) {
-                this.f.setText("", i);
+        if(actionL.equals("xx")) {
+            f.getGrafikPanel().setTxt("", 0);
+            f.getGrafikPanel().setTxt("", 1);
+            f.getGrafikPanel().setRundenErgebnis("Tippe eine Zahl von 1 bis 9");
+            f.getGrafikPanel().getTxtField(0).setEnabled(false);
+        }
+        if (actionL.equals("text")) {
+
+            eingabe = Integer.parseInt(f.getGrafikPanel().getTxt(0));
+
+            gewinnModel.berechneRunde(eingabe);
+
+            f.getGrafikPanel().setRundenErgebnis("" + gewinnModel.getRundenErgebnis());
+
+            f.getGrafikPanel().setGesamtErgebnis("" + gewinnModel.getGesamtPunkte());
+
+            f.getGrafikPanel().setTxt("" + gewinnModel.getComputerZahl(), 1);
+
+
+            if (gewinnModel.hatVerloren()) {
+                f.getGrafikPanel().setRundenErgebnis("Verloren!");
+                f.getGrafikPanel().getTxtField(0).setEnabled(false);
+                f.getGrafikPanel().getButton().setEnabled(false);
             }
-            this.f.setRundenErgebnis("Tippe eine Zahl von 1 bis 9");
-        } else if(actionL.equals("txt")) {
-            this.eingabe = Integer.parseInt(this.f.getText(0));
-            this.gewinnModel.berechneRunde(this.eingabe);
-            this.f.setGesamtErgebnis("" + gewinnModel.getGesamtPunkte());
+
+
+            if (gewinnModel.hatGewonnen()) {
+
+                f.getGrafikPanel().setRundenErgebnis("Gewonnen!");
+
+                f.getGrafikPanel().getTxtField(0).setEnabled(false);
+
+                f.getGrafikPanel().getButton().setEnabled(false);
+            }
+
+
+            f.getGrafikPanel().getTxtField(0).setEnabled(false);
         }
     }
-
 }

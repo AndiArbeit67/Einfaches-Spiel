@@ -6,39 +6,53 @@ import static javax.swing.SwingConstants.CENTER;
 
 public class GrafikPanel extends JPanel{
     private JLabel rundenErgebnis = new JLabel("Tippe eine Zahl von 1 bis 9");
-    private JLabel gesamtPunkte = new JLabel("Gesamtpunkte: ");
-    private JTextField[] txt = new JTextField[2];
-    private JButton btn;
+    private JLabel gesamtPunkte = new JLabel("Gesamtpunkte: 30");
+    private JTextField[] text = new JTextField[2];
+    private JButton button;
 
     public GrafikPanel() {
         BorderLayout b = new BorderLayout();
         this.setLayout(b);
         JPanel oben = new JPanel(new GridLayout(3, 2));
-        oben.add(new JLabel("Rundenergebnis:"));
-        oben.add(new JLabel("Gesamtpunkte:"));
+        oben.add(new JLabel("Rundenergebnis:", CENTER));
+        oben.add(new JLabel("Gesamtpunkte: ", CENTER));
         oben.add(rundenErgebnis);
         oben.add(gesamtPunkte);
-        oben.add(new JLabel("Deine Zahl:"));
-        oben.add(new JLabel("Computer:"));
+        oben.add(new JLabel("Deine Zahl:", CENTER));
+        oben.add(new JLabel("Computer:", CENTER));
 
         JPanel mitte = new JPanel(new GridLayout(1, 2));
-        for (int i = 0; i < 2; i++) {
-            txt[i] = new JTextField();
-            txt[i].setHorizontalAlignment(CENTER);
-            txt[i].setFont(new Font("SansSerif", Font.BOLD, 64));
-            mitte.add(txt[i]);
-        }
-        txt[1].setEnabled(false);
+        text[0] = new JTextField();
+        text[1] = new JTextField();
 
-        JPanel mische = new JPanel(new GridLayout(2, 2));
-        mische.add(oben);
-        mische.add(mitte);
+        text[0].setHorizontalAlignment(JTextField.CENTER);
+        text[1].setHorizontalAlignment(JTextField.CENTER);
+
+        text[0].setFont(new Font("Arial", Font.BOLD, 64));
+        text[1].setFont(new Font("Arial", Font.BOLD, 64));
+
+        rundenErgebnis.setFont(new Font("Arial", Font.BOLD, 20));
+        gesamtPunkte.setFont(new Font("Arial", Font.BOLD, 20));
+        rundenErgebnis.setOpaque(true);
+        gesamtPunkte.setOpaque(true);
+        rundenErgebnis.setBackground(Color.WHITE);
+        gesamtPunkte.setBackground(Color.WHITE);
+        rundenErgebnis.setHorizontalAlignment(JLabel.CENTER);
+        gesamtPunkte.setHorizontalAlignment(JLabel.CENTER);
+
+        mitte.add(text[0]);
+        mitte.add(text[1]);
+        text[1].setEnabled(false);
+
+        JPanel alles = new JPanel(new GridLayout(2, 2));
+        alles.add(oben);
+        alles.add(mitte);
 
         JPanel unten = new JPanel();
-        this.btn = new JButton("Noch einmal!");
-        unten.add(this.btn);
+        this.button = new JButton("Noch einmal!");
+        unten.add(this.button);
 
-        this.add(mische, BorderLayout.CENTER);
+        this.add(alles, BorderLayout.CENTER);
         this.add(unten, BorderLayout.PAGE_END);
     }
     public void setRundenErgebnis(String s) {
@@ -57,17 +71,17 @@ public class GrafikPanel extends JPanel{
         gesamtPunkte.setText(s);
     }
 
-    public JButton getButton() { return this.btn; }
+    public JButton getButton() { return this.button; }
 
     public String getTxt(int i) {
-        return this.txt[i].getText();
+        return this.text[i].getText();
     }
 
     public void setTxt(String s, int i) {
-        this.txt[i].setText(s);
+        this.text[i].setText(s);
     }
 
     public JTextField getTxtField(int i) {
-        return txt[i];
+        return text[i];
     }
 }
