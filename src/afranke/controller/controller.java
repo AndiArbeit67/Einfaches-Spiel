@@ -1,9 +1,7 @@
 package afranke.controller;
 
 import afranke.view.GrafikFrame;
-
 import afranke.model.GewinnModel;
-
 import java.awt.event.*;
 
 public class controller implements ActionListener {
@@ -26,6 +24,7 @@ public class controller implements ActionListener {
             f.getGrafikPanel().setTxt("", 1);
             f.getGrafikPanel().setRundenErgebnis("Tippe eine Zahl von 1 bis 9");
             f.getGrafikPanel().getTxtField(0).setEnabled(true);
+            f.getGrafikPanel().getButton().setEnabled(false);
         }
         if (actionL.equals("text")) {
 
@@ -38,7 +37,8 @@ public class controller implements ActionListener {
             f.getGrafikPanel().setGesamtErgebnis("" + gewinnModel.getGesamtPunkte());
 
             f.getGrafikPanel().setTxt("" + gewinnModel.getComputerZahl(), 1);
-
+            f.getGrafikPanel().getTxtField(0).setEnabled(false);
+            f.getGrafikPanel().getButton().setEnabled(true);
 
             if (gewinnModel.hatVerloren()) {
                 f.getGrafikPanel().setRundenErgebnis("Verloren!");
@@ -55,9 +55,7 @@ public class controller implements ActionListener {
 
                 f.getGrafikPanel().getButton().setEnabled(false);
             }
-
-
-            f.getGrafikPanel().getTxtField(0).setEnabled(false);
+            this.f.getGrafikPanel().getTxtField(0).setEnabled(false);
         }
     }
 }

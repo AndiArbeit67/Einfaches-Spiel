@@ -50,6 +50,7 @@ public class GrafikPanel extends JPanel{
 
         JPanel unten = new JPanel();
         this.button = new JButton("Noch einmal!");
+        this.button.setEnabled(false);
         unten.add(this.button);
 
         this.add(alles, BorderLayout.CENTER);
