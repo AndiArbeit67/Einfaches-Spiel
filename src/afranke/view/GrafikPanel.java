@@ -11,6 +11,7 @@ public class GrafikPanel extends JPanel{
     private JButton button;
 
     public GrafikPanel() {
+        //Borderlayout erstellt
         BorderLayout b = new BorderLayout();
         this.setLayout(b);
 
