@@ -3,6 +3,7 @@ package afranke.controller;
 import afranke.view.GrafikFrame;
 import afranke.model.GewinnModel;
 import java.awt.event.*;
+import java.awt.*;
 
 public class controller implements ActionListener {
     private GrafikFrame f;
@@ -39,6 +40,18 @@ public class controller implements ActionListener {
             f.getGrafikPanel().setTxt("" + gewinnModel.getComputerZahl(), 1);
             f.getGrafikPanel().getTxtField(0).setEnabled(false);
             f.getGrafikPanel().getButton().setEnabled(true);
+
+            if(this.gewinnModel.getRundenErgebnis() < 0) {
+                for (int i = 0; i < 2; i++) {
+                    this.f.getGrafikPanel().getJLabel(i).setOpaque(true);
+                    this.f.getGrafikPanel().getJLabel(i).setBackground(Color.RED);
+                }
+            } else {
+                for (int i = 0; i < 2; i++) {
+                    this.f.getGrafikPanel().getJLabel(i).setOpaque(true);
+                    this.f.getGrafikPanel().getJLabel(i).setBackground(Color.GREEN);
+                }
+            }
 
             if (gewinnModel.hatVerloren()) {
                 f.getGrafikPanel().setRundenErgebnis("Verloren!");
